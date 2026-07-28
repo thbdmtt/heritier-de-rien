@@ -513,20 +513,24 @@ figure {
 }
 
 .portrait-figure {
-  width: min(100%, 37rem);
+  position: relative;
+  width: min(100%, 34rem);
 }
 
 .portrait-frame {
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  background: #d8d0c2;
+  background: var(--paper-deep);
+  box-shadow:
+    -1rem 1rem 0 var(--paper-deep),
+    0 2rem 4rem rgb(24 21 17 / 0.12);
 }
 
 .portrait-frame::after {
   position: absolute;
   inset: 0;
-  border: 1px solid rgb(255 255 255 / 0.2);
+  border: 1px solid rgb(255 255 255 / 0.28);
   content: "";
   pointer-events: none;
 }
@@ -535,11 +539,13 @@ figure {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 48% 42%;
-  filter: grayscale(1) contrast(1.03);
+  object-position: center;
 }
 
 .portrait-figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: 0.85rem;
   padding-top: 0.7rem;
   border-top: 1px solid var(--line);
@@ -548,6 +554,11 @@ figure {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.portrait-figure figcaption span:last-child {
+  color: #8a857b;
+  font-weight: 500;
 }
 
 .author-copy {

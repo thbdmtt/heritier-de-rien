@@ -32,6 +32,8 @@ test("rend la page éditoriale en français", async () => {
   assert.match(html, /<title>Héritier de rien — Gilbert Myotte<\/title>/i);
   assert.match(html, /On ne choisit pas d’où l’on vient\./);
   assert.match(html, /Je viens d’un monde où l’on parlait peu\./);
-  assert.match(html, /Portrait de Gilbert Myotte/);
+  assert.match(html, /Gilbert Myotte, auteur d’Héritier de rien/);
+  assert.match(html, /<meta property="og:image" content="http:\/\/localhost:3000\/og\.png"/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image"/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
