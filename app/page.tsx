@@ -176,14 +176,17 @@ export default function Home() {
           <figure className="portrait-figure">
             <div className="portrait-frame">
               <img
-                src="/images/gilbert-myotte.jpg"
-                alt="Portrait de Gilbert Myotte"
-                width="1200"
-                height="1255"
+                src="/images/gilbert-myotte-editorial-v2.jpg"
+                alt="Gilbert Myotte, auteur d’Héritier de rien"
+                width="1122"
+                height="1402"
                 loading="lazy"
               />
             </div>
-            <figcaption>Gilbert Myotte</figcaption>
+            <figcaption>
+              <span>Gilbert Myotte</span>
+              <span>Portrait de l’auteur</span>
+            </figcaption>
           </figure>
 
           <div className="author-copy">
