@@ -5,10 +5,11 @@ import test from "node:test";
 const projectRoot = new URL("../", import.meta.url);
 
 test("génère une page GitHub Pages autonome et responsive", async () => {
-  const [html, bookHtml, excerptHtml, aboutHtml, robots, sitemap, css] =
+  const [html, bookHtml, buyHtml, excerptHtml, aboutHtml, robots, sitemap, css] =
     await Promise.all([
     readFile(new URL("index.html", projectRoot), "utf8"),
     readFile(new URL("le-livre/index.html", projectRoot), "utf8"),
+    readFile(new URL("acheter/index.html", projectRoot), "utf8"),
     readFile(new URL("extrait/index.html", projectRoot), "utf8"),
     readFile(new URL("a-propos/index.html", projectRoot), "utf8"),
     readFile(new URL("robots.txt", projectRoot), "utf8"),
@@ -56,6 +57,17 @@ test("génère une page GitHub Pages autonome et responsive", async () => {
     /<link rel="canonical" href="https:\/\/www\.gilbertmyotte\.fr\/le-livre\/"/,
   );
   assert.match(bookHtml, /Héritier de rien, le livre — Gilbert Myotte/);
+  assert.match(bookHtml, /"genre":"Autobiographie"/);
+  assert.match(bookHtml, /"bookFormat":"https:\/\/schema\.org\/EBook"/);
+  assert.match(bookHtml, /"propertyID":"ASIN","value":"B0HC34G72D"/);
+  assert.match(bookHtml, /https:\/\/www\.amazon\.fr\/dp\/B0HC34G72D/);
+  assert.doesNotMatch(bookHtml, /[?&](?:ref|dib|sr)=|publisher/);
+  assert.match(
+    buyHtml,
+    /<link rel="canonical" href="https:\/\/www\.gilbertmyotte\.fr\/acheter\/"/,
+  );
+  assert.match(buyHtml, /Acheter Héritier de rien — Édition Kindle/);
+  assert.match(buyHtml, /Voir le livre sur Amazon\.fr/);
   assert.match(
     excerptHtml,
     /<link rel="canonical" href="https:\/\/www\.gilbertmyotte\.fr\/extrait\/"/,
@@ -66,13 +78,26 @@ test("génère une page GitHub Pages autonome et responsive", async () => {
     /<link rel="canonical" href="https:\/\/www\.gilbertmyotte\.fr\/a-propos\/"/,
   );
   assert.match(aboutHtml, /"@type":"ProfilePage"/);
+  assert.match(aboutHtml, /"jobTitle":"Auteur"/);
+  assert.match(
+    aboutHtml,
+    /https:\/\/www\.facebook\.com\/profile\.php\?id=61589753998177/,
+  );
+  assert.doesNotMatch(aboutHtml, /PAGE_A_COMPLETER|babelio\.com/);
+  assert.match(excerptHtml, /"name":"Prologue — Héritier de rien"/);
 
   assert.match(robots, /^User-Agent: \*\nAllow: \//);
   assert.match(
     robots,
     /Sitemap: https:\/\/www\.gilbertmyotte\.fr\/sitemap\.xml/,
   );
-  for (const path of ["/", "/le-livre/", "/extrait/", "/a-propos/"]) {
+  for (const path of [
+    "/",
+    "/le-livre/",
+    "/acheter/",
+    "/extrait/",
+    "/a-propos/",
+  ]) {
     assert.ok(
       sitemap.includes(`<loc>https://www.gilbertmyotte.fr${path}</loc>`),
     );

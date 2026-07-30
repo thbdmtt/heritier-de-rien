@@ -15,8 +15,11 @@ export function SiteHeader() {
         <Link className="nav-secondary" href="/a-propos/">
           L’auteur
         </Link>
-        <Link className="nav-primary" href="/extrait/">
-          Lire un extrait <span aria-hidden="true">↓</span>
+        <Link className="nav-secondary" href="/extrait/">
+          Extrait
+        </Link>
+        <Link className="nav-primary" href="/acheter/">
+          Acheter le livre <span aria-hidden="true">→</span>
         </Link>
       </nav>
     </header>

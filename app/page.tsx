@@ -230,9 +230,14 @@ export default function Home() {
               arriver au monde les mains vides.
             </p>
           </div>
-          <a className="closing-link" href="/extrait/">
-            Lire le prologue <span aria-hidden="true">→</span>
-          </a>
+          <div className="closing-actions">
+            <a className="closing-link" href="/extrait/">
+              Lire le prologue <span aria-hidden="true">→</span>
+            </a>
+            <a className="closing-link" href="/acheter/">
+              Disponible sur Kindle <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </section>
       </main>
 

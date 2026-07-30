@@ -7,6 +7,7 @@ cailloux du tacot**, de Gilbert Myotte.
 
 - `/` : présentation générale
 - `/le-livre/` : présentation détaillée du livre
+- `/acheter/` : disponibilité Kindle et future édition papier
 - `/extrait/` : extrait gratuit du prologue
 - `/a-propos/` : page auteur
 - `/robots.txt` et `/sitemap.xml` : exploration et indexation
@@ -33,12 +34,12 @@ données structurées, robots, sitemap et pages éditoriales.
    Domaine.
 2. Soumettre `https://www.gilbertmyotte.fr/sitemap.xml`.
 3. Demander l’indexation de la page d’accueil, puis de `/le-livre/`,
-   `/extrait/` et `/a-propos/`.
+   `/acheter/`, `/extrait/` et `/a-propos/`.
 4. Importer la propriété Search Console dans Bing Webmaster Tools, ou y
    soumettre le même sitemap.
 5. Surveiller les rapports Pages, Résultats enrichis et Signaux Web essentiels.
 
-Quand l’ISBN, la date de publication, les liens d’achat, des avis vérifiés ou
-des profils auteur officiels seront disponibles, les ajouter au contenu visible
-et aux données structurées. Ne jamais publier de note, d’avis ou de
-disponibilité qui ne soit pas vérifiable.
+Quand l’ISBN, la date de publication et le lien de l’édition papier seront
+disponibles, ajouter une seconde édition dans `workExample` sans remplacer
+l’édition Kindle. Ajouter des avis uniquement lorsqu’ils sont vérifiables et
+visibles sur le site.

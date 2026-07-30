@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  authorEntity,
   bookEntity,
   breadcrumbJsonLd,
   jsonLd,
@@ -47,6 +48,8 @@ export default function ExcerptPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
+      authorEntity,
+      bookEntity,
       {
         "@type": "WebPage",
         "@id": `${SITE_URL}/extrait/#webpage`,
@@ -58,7 +61,9 @@ export default function ExcerptPage() {
         about: { "@id": bookEntity["@id"] },
         mainEntity: {
           "@type": "CreativeWork",
-          name: "Prologue d’Héritier de rien",
+          "@id": `${SITE_URL}/extrait/#prologue`,
+          name: "Prologue — Héritier de rien",
+          url: `${SITE_URL}/extrait/`,
           inLanguage: "fr-FR",
           isPartOf: { "@id": bookEntity["@id"] },
           author: bookEntity.author,

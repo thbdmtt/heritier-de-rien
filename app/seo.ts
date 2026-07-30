@@ -3,6 +3,11 @@ export const SITE_NAME = "Héritier de rien";
 export const BOOK_TITLE = "Héritier de rien";
 export const BOOK_SUBTITLE = "Les petits cailloux du tacot";
 export const AUTHOR_NAME = "Gilbert Myotte";
+export const AMAZON_KINDLE_ASIN = "B0HC34G72D";
+export const AMAZON_KINDLE_URL =
+  `https://www.amazon.fr/dp/${AMAZON_KINDLE_ASIN}`;
+export const FACEBOOK_URL =
+  "https://www.facebook.com/profile.php?id=61589753998177";
 export const SOCIAL_IMAGE_URL = `${SITE_URL}/public/og.png`;
 export const FAVICON_URL = `${SITE_URL}/public/favicon.png`;
 export const COVER_IMAGE_URL =
@@ -28,7 +33,9 @@ export const authorEntity = {
   url: `${SITE_URL}/a-propos/`,
   image: AUTHOR_IMAGE_URL,
   description:
-    "Gilbert Myotte est l’auteur du récit autobiographique Héritier de rien, Les petits cailloux du tacot.",
+    "Gilbert Myotte est l’auteur d’Héritier de rien, Les petits cailloux du tacot, un récit autobiographique brut, sincère et profondément humain.",
+  jobTitle: "Auteur",
+  sameAs: [FACEBOOK_URL],
 };
 
 export const bookEntity = {
@@ -36,12 +43,30 @@ export const bookEntity = {
   "@id": `${SITE_URL}/le-livre/#livre`,
   name: BOOK_TITLE,
   alternateName: `${BOOK_TITLE} — ${BOOK_SUBTITLE}`,
+  alternativeHeadline: BOOK_SUBTITLE,
   url: `${SITE_URL}/le-livre/`,
   image: COVER_IMAGE_URL,
   description:
-    "Le récit autobiographique de Gilbert Myotte, une vie construite sans raccourci et sans filet.",
+    "Héritier de rien, Les petits cailloux du tacot : le récit autobiographique de Gilbert Myotte.",
   inLanguage: "fr-FR",
+  genre: "Autobiographie",
   author: { "@id": authorEntity["@id"] },
+  sameAs: [AMAZON_KINDLE_URL],
+  workExample: {
+    "@type": "Book",
+    "@id": `${SITE_URL}/le-livre/#edition-kindle`,
+    name: `${BOOK_TITLE} — ${BOOK_SUBTITLE}, édition Kindle`,
+    bookFormat: "https://schema.org/EBook",
+    inLanguage: "fr-FR",
+    url: `${SITE_URL}/acheter/`,
+    sameAs: AMAZON_KINDLE_URL,
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "ASIN",
+      value: AMAZON_KINDLE_ASIN,
+    },
+    author: { "@id": authorEntity["@id"] },
+  },
 };
 
 export const websiteEntity = {

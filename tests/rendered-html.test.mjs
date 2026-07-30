@@ -70,6 +70,11 @@ test("rend des pages éditoriales avec des métadonnées uniques", async () => {
       marker: "Lire un extrait d’Héritier de rien",
     },
     {
+      path: "/acheter",
+      canonical: "https://www.gilbertmyotte.fr/acheter/",
+      marker: "Acheter Héritier de rien — Édition Kindle",
+    },
+    {
       path: "/a-propos",
       canonical: "https://www.gilbertmyotte.fr/a-propos/",
       marker: "Gilbert Myotte, auteur d’Héritier de rien",
@@ -104,6 +109,7 @@ test("publie robots.txt et sitemap.xml sur le domaine canonique", async () => {
   );
   assert.equal(sitemapResponse.status, 200);
   assert.match(sitemap, /https:\/\/www\.gilbertmyotte\.fr\/le-livre\//);
+  assert.match(sitemap, /https:\/\/www\.gilbertmyotte\.fr\/acheter\//);
   assert.match(sitemap, /https:\/\/www\.gilbertmyotte\.fr\/extrait\//);
   assert.match(sitemap, /https:\/\/www\.gilbertmyotte\.fr\/a-propos\//);
 });

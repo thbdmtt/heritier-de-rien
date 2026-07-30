@@ -2,7 +2,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  AMAZON_KINDLE_URL,
   AUTHOR_NAME,
+  authorEntity,
   bookEntity,
   breadcrumbJsonLd,
   COVER_IMAGE_URL,
@@ -50,6 +52,7 @@ export default function BookPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
+      authorEntity,
       bookEntity,
       {
         "@type": "WebPage",
@@ -122,9 +125,19 @@ export default function BookPage() {
               par soi-même, tomber, se relever, recommencer, et prouver sans
               cesse que l’on a sa place.
             </p>
-            <a className="detail-cta" href="/extrait/">
-              Lire un extrait du prologue <span aria-hidden="true">→</span>
-            </a>
+            <div className="cta-group">
+              <Link className="detail-cta" href="/extrait/">
+                Lire un extrait <span aria-hidden="true">→</span>
+              </Link>
+              <Link className="detail-cta detail-cta-primary" href="/acheter/">
+                Acheter le livre <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+            <p className="availability-note">
+              Disponible au format Kindle sur{" "}
+              <a href={AMAZON_KINDLE_URL}>Amazon.fr</a>. L’édition papier
+              paraîtra prochainement.
+            </p>
           </div>
 
           <figure className="detail-visual">

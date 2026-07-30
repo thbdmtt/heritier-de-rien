@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   authorEntity,
   breadcrumbJsonLd,
+  FACEBOOK_URL,
   jsonLd,
   SITE_NAME,
   SITE_URL,
@@ -123,6 +124,15 @@ export default function AboutPage() {
             </p>
             <a className="detail-cta" href="/le-livre/">
               Découvrir Héritier de rien <span aria-hidden="true">→</span>
+            </a>
+            <a
+              className="social-link"
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Suivre Gilbert Myotte sur Facebook
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
         </article>

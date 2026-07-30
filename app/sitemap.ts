@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: absoluteUrl("/acheter/"),
+      lastModified: "2026-07-30",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: absoluteUrl("/extrait/"),
       lastModified: "2026-07-30",
       changeFrequency: "yearly",

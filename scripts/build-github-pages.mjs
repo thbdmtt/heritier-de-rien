@@ -108,6 +108,7 @@ const css = await readFile(new URL(cssFiles[0], assetsDirectory), "utf8");
 await Promise.all([
   renderPage("/", "index.html"),
   renderPage("/le-livre", "le-livre/index.html"),
+  renderPage("/acheter", "acheter/index.html"),
   renderPage("/extrait", "extrait/index.html"),
   renderPage("/a-propos", "a-propos/index.html"),
   fetchFromWorker("/robots.txt", "text/plain").then((content) =>
