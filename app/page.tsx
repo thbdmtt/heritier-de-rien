@@ -1,3 +1,14 @@
+/* eslint-disable @next/next/no-img-element -- Static GitHub Pages output serves the original optimized assets directly. */
+import {
+  authorEntity,
+  bookEntity,
+  homeDescription,
+  jsonLd,
+  SITE_URL,
+  websiteEntity,
+} from "./seo";
+import { SiteFooter, SiteHeader } from "./site-chrome";
+
 const Arrow = () => (
   <span className="arrow" aria-hidden="true">
     ↘
@@ -5,44 +16,51 @@ const Arrow = () => (
 );
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      websiteEntity,
+      authorEntity,
+      bookEntity,
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/#webpage`,
+        url: `${SITE_URL}/`,
+        name: "Héritier de rien — Gilbert Myotte",
+        description: homeDescription,
+        inLanguage: "fr-FR",
+        isPartOf: { "@id": websiteEntity["@id"] },
+        about: { "@id": bookEntity["@id"] },
+        mainEntity: { "@id": bookEntity["@id"] },
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }}
+      />
       <a className="skip-link" href="#contenu">
         Aller au contenu
       </a>
 
-      <header className="site-header">
-        <a className="wordmark" href="#accueil" aria-label="Héritier de rien — accueil">
-          <span>Héritier de rien</span>
-          <span>Gilbert Myotte</span>
-        </a>
-
-        <nav className="main-nav" aria-label="Navigation principale">
-          <a className="nav-secondary" href="#livre">
-            Le livre
-          </a>
-          <a className="nav-secondary" href="#auteur">
-            L’auteur
-          </a>
-          <a className="nav-primary" href="#extrait">
-            Lire un extrait <span aria-hidden="true">↓</span>
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main id="contenu">
         <section className="hero" id="accueil" aria-labelledby="titre-livre">
           <div className="hero-copy">
             <p className="eyebrow">Une autobiographie · Gilbert Myotte</p>
             <h1 id="titre-livre">
-              Héritier
+              Héritier{" "}
               <span>de rien</span>
             </h1>
             <p className="subtitle">Les petits cailloux du tacot</p>
 
             <div className="hero-intro">
               <p>On ne choisit pas d’où l’on vient.</p>
-              <a className="text-link" href="#livre">
+              <a className="text-link" href="/le-livre/">
                 Découvrir le livre <Arrow />
               </a>
             </div>
@@ -107,6 +125,9 @@ export default function Home() {
               tôt, les maladies qui surgissent lorsque l’on croit avoir déjà
               tout encaissé.
             </p>
+            <a className="text-link section-link" href="/le-livre/">
+              Lire la présentation complète <Arrow />
+            </a>
           </div>
         </section>
 
@@ -152,20 +173,9 @@ export default function Home() {
               nous, les mots coûtaient plus cher que le silence et servaient
               moins souvent.
             </p>
-            <p>
-              J’ai vécu mon adolescence dans un petit appartement où l’air
-              semblait toujours lesté de quelque chose de lourd, d’invisible,
-              une gravité ancienne qui se déposait sur les meubles, sur les
-              corps, sur les repas, sur les soirs.
-            </p>
-            <p>
-              À table, on ne parlait ni de vocation, ni de projets, ni de ces
-              grands lendemains qui fleurissent dans les familles sûres
-              d’elles-mêmes. On parlait surtout de ce qu’il fallait faire pour
-              tenir. Tenir le mois. Tenir au travail. Tenir debout quand même.
-              Chez nous, la vie n’était pas une promesse. C’était une manière
-              de résister sans bruit.
-            </p>
+            <a className="text-link section-link" href="/extrait/">
+              Continuer la lecture <Arrow />
+            </a>
             <span className="end-mark" aria-hidden="true">
               ●
             </span>
@@ -202,6 +212,9 @@ export default function Home() {
               «&nbsp;Puis j’ai compris que c’était précisément là le
               problème. On ne raconte pas assez ces vies-là.&nbsp;»
             </blockquote>
+            <a className="text-link section-link" href="/a-propos/">
+              Découvrir Gilbert Myotte <Arrow />
+            </a>
           </div>
         </section>
 
@@ -217,17 +230,13 @@ export default function Home() {
               arriver au monde les mains vides.
             </p>
           </div>
-          <a className="closing-link" href="#extrait">
-            Lire le prologue <span aria-hidden="true">↑</span>
+          <a className="closing-link" href="/extrait/">
+            Lire le prologue <span aria-hidden="true">→</span>
           </a>
         </section>
       </main>
 
-      <footer className="site-footer">
-        <p>Héritier de rien</p>
-        <p>Les petits cailloux du tacot</p>
-        <p>Gilbert Myotte</p>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

@@ -1,50 +1,70 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
+import {
+  AUTHOR_NAME,
+  FAVICON_URL,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_IMAGE_URL,
+  homeDescription,
+} from "./seo";
 
 const title = "Héritier de rien — Gilbert Myotte";
-const description =
-  "Héritier de rien, Les petits cailloux du tacot : le récit autobiographique de Gilbert Myotte.";
 const socialDescription =
   "On ne choisit pas d’où l’on vient. Le récit autobiographique de Gilbert Myotte.";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const forwardedHost = requestHeaders.get("x-forwarded-host")?.split(",")[0];
-  const host = forwardedHost ?? requestHeaders.get("host") ?? "localhost:3000";
-  const forwardedProtocol = requestHeaders
-    .get("x-forwarded-proto")
-    ?.split(",")[0];
-  const protocol =
-    forwardedProtocol ?? (host.includes("localhost") ? "http" : "https");
-  const ogImage = new URL("/og.png", `${protocol}://${host}`).toString();
-
-  return {
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: title,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: homeDescription,
+  applicationName: SITE_NAME,
+  authors: [{ name: AUTHOR_NAME, url: "/a-propos/" }],
+  creator: AUTHOR_NAME,
+  category: "Livres",
+  icons: {
+    icon: [{ url: FAVICON_URL, type: "image/png", sizes: "192x192" }],
+    apple: [{ url: FAVICON_URL, type: "image/png", sizes: "192x192" }],
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
     title,
-    description,
-    authors: [{ name: "Gilbert Myotte" }],
-    openGraph: {
-      title,
-      description: socialDescription,
-      type: "book",
-      locale: "fr_FR",
-      images: [
-        {
-          url: ogImage,
-          width: 1731,
-          height: 909,
-          alt: "Héritier de rien, de Gilbert Myotte",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: socialDescription,
-      images: [ogImage],
-    },
-  };
-}
+    description: socialDescription,
+    url: "/",
+    siteName: SITE_NAME,
+    type: "book",
+    locale: "fr_FR",
+    images: [
+      {
+        url: SOCIAL_IMAGE_URL,
+        width: 1200,
+        height: 630,
+        alt: "Héritier de rien, de Gilbert Myotte",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: socialDescription,
+    images: [SOCIAL_IMAGE_URL],
+  },
+};
 
 export const viewport: Viewport = {
   width: "device-width",
