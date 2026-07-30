@@ -26,6 +26,7 @@ test("génère une page GitHub Pages autonome et responsive", async () => {
   assert.doesNotMatch(html, /[→↗↘]/);
   assert.match(html, /link-arrow--down-right/);
   assert.match(html, /link-arrow--right/);
+  assert.match(css, /\.link-arrow:before\{transform-origin:100%/);
   assert.match(html, /src="\/public\/images\/heritier-de-rien-couverture\.jpg"/);
   assert.match(html, /src="\/public\/images\/gilbert-myotte-editorial-v2\.jpg"/);
   assert.match(html, /href="\/github-pages\.css"/);

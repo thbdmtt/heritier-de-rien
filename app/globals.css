@@ -255,11 +255,10 @@ figure {
 }
 
 .link-arrow::before {
-  top: calc(50% - 0.75px);
-  left: 4%;
-  width: 92%;
-  height: 1.5px;
+  width: 100%;
+  height: 1px;
   background: currentcolor;
+  transform-origin: right center;
 }
 
 .link-arrow::after {
@@ -272,28 +271,39 @@ figure {
 .link-arrow--right::after {
   top: 50%;
   right: 0;
-  border-width: 0 1.5px 1.5px 0;
+  border-width: 0 1px 1px 0;
   transform: translateY(-50%) rotate(-45deg);
 }
 
+.link-arrow--right::before {
+  top: calc(50% - 0.5px);
+  right: 0;
+}
+
 .link-arrow--down-right::before {
+  right: 0;
+  bottom: 0;
+  width: 118%;
   transform: rotate(45deg);
 }
 
 .link-arrow--down-right::after {
   right: 0;
   bottom: 0;
-  border-width: 0 1.5px 1.5px 0;
+  border-width: 0 1px 1px 0;
 }
 
 .link-arrow--up-right::before {
+  top: 0;
+  right: 0;
+  width: 118%;
   transform: rotate(-45deg);
 }
 
 .link-arrow--up-right::after {
   top: 0;
   right: 0;
-  border-width: 1.5px 1.5px 0 0;
+  border-width: 1px 1px 0 0;
 }
 
 .text-link:hover .link-arrow--down-right,
