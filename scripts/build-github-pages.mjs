@@ -16,6 +16,19 @@ const context = {
   waitUntil() {},
   passThroughOnException() {},
 };
+const assetsDirectory = new URL("../dist/client/assets/", import.meta.url);
+const cssFiles = (await readdir(assetsDirectory)).filter((file) =>
+  /^index-[A-Za-z0-9_-]+\.css$/.test(file),
+);
+
+if (cssFiles.length !== 1) {
+  throw new Error(
+    `Une feuille de style était attendue, ${cssFiles.length} ont été trouvées.`,
+  );
+}
+
+const css = await readFile(new URL(cssFiles[0], assetsDirectory), "utf8");
+const stylesheetVersion = cssFiles[0].slice("index-".length, -".css".length);
 
 async function fetchFromWorker(path, accept) {
   let requestPath = path;
@@ -75,7 +88,7 @@ async function renderPage(path, outputPath) {
   html = html.replaceAll('src="/images/', 'src="/public/images/');
   html = html.replace(
     "</head>",
-    '<link rel="stylesheet" href="/github-pages.css"></head>',
+    `<link rel="stylesheet" href="/github-pages.css?v=${stylesheetVersion}"></head>`,
   );
 
   structuredDataScripts.forEach((script, index) => {
@@ -93,18 +106,6 @@ async function renderPage(path, outputPath) {
   await writeFile(outputUrl, `${html}\n`, "utf8");
 }
 
-const assetsDirectory = new URL("../dist/client/assets/", import.meta.url);
-const cssFiles = (await readdir(assetsDirectory)).filter((file) =>
-  /^index-[A-Za-z0-9_-]+\.css$/.test(file),
-);
-
-if (cssFiles.length !== 1) {
-  throw new Error(
-    `Une feuille de style était attendue, ${cssFiles.length} ont été trouvées.`,
-  );
-}
-
-const css = await readFile(new URL(cssFiles[0], assetsDirectory), "utf8");
 await Promise.all([
   renderPage("/", "index.html"),
   renderPage("/le-livre", "le-livre/index.html"),

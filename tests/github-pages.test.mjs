@@ -31,7 +31,10 @@ test("génère une page GitHub Pages autonome et responsive", async () => {
   assert.match(css, /font-variant-emoji:text/);
   assert.match(html, /src="\/public\/images\/heritier-de-rien-couverture\.jpg"/);
   assert.match(html, /src="\/public\/images\/gilbert-myotte-editorial-v2\.jpg"/);
-  assert.match(html, /href="\/github-pages\.css"/);
+  assert.match(
+    html,
+    /href="\/github-pages\.css\?v=[A-Za-z0-9_-]+"/,
+  );
   assert.match(
     html,
     /<link rel="canonical" href="https:\/\/www\.gilbertmyotte\.fr\/"/,
