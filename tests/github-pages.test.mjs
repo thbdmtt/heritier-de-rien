@@ -23,10 +23,12 @@ test("génère une page GitHub Pages autonome et responsive", async () => {
 
   assert.match(html, /<title>Héritier de rien — Gilbert Myotte<\/title>/);
   assert.match(html, /On ne choisit pas d’où l’on vient\./);
-  assert.doesNotMatch(html, /[→↗↘]/);
+  assert.doesNotMatch(html, /[→↗↘](?!\uFE0E)/u);
+  assert.doesNotMatch(html, /\uFE0F/u);
+  assert.match(html, /↘\uFE0E/u);
   assert.match(html, /link-arrow--down-right/);
   assert.match(html, /link-arrow--right/);
-  assert.match(css, /\.link-arrow:before\{transform-origin:100%/);
+  assert.match(css, /font-variant-emoji:text/);
   assert.match(html, /src="\/public\/images\/heritier-de-rien-couverture\.jpg"/);
   assert.match(html, /src="\/public\/images\/gilbert-myotte-editorial-v2\.jpg"/);
   assert.match(html, /href="\/github-pages\.css"/);
@@ -72,7 +74,8 @@ test("génère une page GitHub Pages autonome et responsive", async () => {
   );
   assert.match(buyHtml, /Acheter Héritier de rien — Édition Kindle/);
   assert.match(buyHtml, /Voir le livre sur Amazon\.fr/);
-  assert.doesNotMatch(buyHtml, /[→↗↘]/);
+  assert.doesNotMatch(buyHtml, /[→↗↘](?!\uFE0E)/u);
+  assert.match(buyHtml, /↗\uFE0E/u);
   assert.match(buyHtml, /link-arrow--up-right/);
   assert.match(
     excerptHtml,
