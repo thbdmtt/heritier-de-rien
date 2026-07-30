@@ -14,6 +14,7 @@ import {
   SOCIAL_IMAGE_URL,
   websiteEntity,
 } from "../seo";
+import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
 const title = "Héritier de rien, le livre — Gilbert Myotte";
@@ -127,10 +128,10 @@ export default function BookPage() {
             </p>
             <div className="cta-group">
               <Link className="detail-cta" href="/extrait/">
-                Lire un extrait <span aria-hidden="true">→</span>
+                Lire un extrait <LinkArrow />
               </Link>
               <Link className="detail-cta detail-cta-primary" href="/acheter/">
-                Acheter le livre <span aria-hidden="true">→</span>
+                Acheter le livre <LinkArrow />
               </Link>
             </div>
             <p className="availability-note">

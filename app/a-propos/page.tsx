@@ -11,6 +11,7 @@ import {
   SOCIAL_IMAGE_URL,
   websiteEntity,
 } from "../seo";
+import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
 const title = "Gilbert Myotte, auteur d’Héritier de rien";
@@ -123,7 +124,7 @@ export default function AboutPage() {
               tout apprendre par eux-mêmes.
             </p>
             <a className="detail-cta" href="/le-livre/">
-              Découvrir Héritier de rien <span aria-hidden="true">→</span>
+              Découvrir Héritier de rien <LinkArrow />
             </a>
             <a
               className="social-link"
@@ -132,7 +133,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
             >
               Suivre Gilbert Myotte sur Facebook
-              <span aria-hidden="true">↗</span>
+              <LinkArrow direction="up-right" />
             </a>
           </div>
         </article>

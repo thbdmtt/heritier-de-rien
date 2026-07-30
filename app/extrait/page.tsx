@@ -10,6 +10,7 @@ import {
   SOCIAL_IMAGE_URL,
   websiteEntity,
 } from "../seo";
+import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
 const title = "Lire un extrait d’Héritier de rien — Gilbert Myotte";
@@ -133,7 +134,7 @@ export default function ExcerptPage() {
           <footer className="reading-footer">
             <p>Héritier de rien · Les petits cailloux du tacot</p>
             <a className="detail-cta" href="/le-livre/">
-              Découvrir le livre <span aria-hidden="true">→</span>
+              Découvrir le livre <LinkArrow />
             </a>
           </footer>
         </article>

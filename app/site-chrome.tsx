@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LinkArrow } from "./link-arrow";
 
 export function SiteHeader() {
   return (
@@ -19,7 +20,7 @@ export function SiteHeader() {
           Extrait
         </Link>
         <Link className="nav-primary" href="/acheter/">
-          Acheter le livre <span aria-hidden="true">→</span>
+          Acheter le livre <LinkArrow />
         </Link>
       </nav>
     </header>

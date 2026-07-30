@@ -7,13 +7,8 @@ import {
   SITE_URL,
   websiteEntity,
 } from "./seo";
+import { LinkArrow } from "./link-arrow";
 import { SiteFooter, SiteHeader } from "./site-chrome";
-
-const Arrow = () => (
-  <span className="arrow" aria-hidden="true">
-    ↘
-  </span>
-);
 
 export default function Home() {
   const structuredData = {
@@ -61,7 +56,7 @@ export default function Home() {
             <div className="hero-intro">
               <p>On ne choisit pas d’où l’on vient.</p>
               <a className="text-link" href="/le-livre/">
-                Découvrir le livre <Arrow />
+                Découvrir le livre <LinkArrow direction="down-right" />
               </a>
             </div>
           </div>
@@ -126,7 +121,8 @@ export default function Home() {
               tout encaissé.
             </p>
             <a className="text-link section-link" href="/le-livre/">
-              Lire la présentation complète <Arrow />
+              Lire la présentation complète{" "}
+              <LinkArrow direction="down-right" />
             </a>
           </div>
         </section>
@@ -174,7 +170,7 @@ export default function Home() {
               moins souvent.
             </p>
             <a className="text-link section-link" href="/extrait/">
-              Continuer la lecture <Arrow />
+              Continuer la lecture <LinkArrow direction="down-right" />
             </a>
             <span className="end-mark" aria-hidden="true">
               ●
@@ -213,7 +209,8 @@ export default function Home() {
               problème. On ne raconte pas assez ces vies-là.&nbsp;»
             </blockquote>
             <a className="text-link section-link" href="/a-propos/">
-              Découvrir Gilbert Myotte <Arrow />
+              Découvrir Gilbert Myotte{" "}
+              <LinkArrow direction="down-right" />
             </a>
           </div>
         </section>
@@ -232,10 +229,10 @@ export default function Home() {
           </div>
           <div className="closing-actions">
             <a className="closing-link" href="/extrait/">
-              Lire le prologue <span aria-hidden="true">→</span>
+              Lire le prologue <LinkArrow />
             </a>
             <a className="closing-link" href="/acheter/">
-              Disponible sur Kindle <span aria-hidden="true">→</span>
+              Disponible sur Kindle <LinkArrow />
             </a>
           </div>
         </section>

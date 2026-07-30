@@ -14,6 +14,7 @@ import {
   SOCIAL_IMAGE_URL,
   websiteEntity,
 } from "../seo";
+import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
 const title = "Acheter Héritier de rien — Édition Kindle";
@@ -110,7 +111,7 @@ export default function BuyPage() {
                 rel="noopener noreferrer"
               >
                 Voir le livre sur Amazon.fr
-                <span aria-hidden="true">↗</span>
+                <LinkArrow direction="up-right" />
               </a>
             </section>
 
@@ -123,7 +124,7 @@ export default function BuyPage() {
             </aside>
 
             <Link className="detail-cta" href="/extrait/">
-              Lire un extrait <span aria-hidden="true">→</span>
+              Lire un extrait <LinkArrow />
             </Link>
           </div>
 

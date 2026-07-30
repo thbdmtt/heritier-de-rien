@@ -238,14 +238,83 @@ figure {
   white-space: nowrap;
 }
 
-.arrow {
-  font-size: 1.1rem;
+.link-arrow {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 0.85rem;
+  height: 0.85rem;
+  color: currentcolor;
   transition: transform 180ms ease;
 }
 
-.text-link:hover .arrow,
-.text-link:focus-visible .arrow {
+.link-arrow::before,
+.link-arrow::after {
+  position: absolute;
+  content: "";
+}
+
+.link-arrow::before {
+  top: calc(50% - 0.75px);
+  left: 4%;
+  width: 92%;
+  height: 1.5px;
+  background: currentcolor;
+}
+
+.link-arrow::after {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-color: currentcolor;
+  border-style: solid;
+}
+
+.link-arrow--right::after {
+  top: 50%;
+  right: 0;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.link-arrow--down-right::before {
+  transform: rotate(45deg);
+}
+
+.link-arrow--down-right::after {
+  right: 0;
+  bottom: 0;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+.link-arrow--up-right::before {
+  transform: rotate(-45deg);
+}
+
+.link-arrow--up-right::after {
+  top: 0;
+  right: 0;
+  border-width: 1.5px 1.5px 0 0;
+}
+
+.text-link:hover .link-arrow--down-right,
+.text-link:focus-visible .link-arrow--down-right {
   transform: translate(0.2rem, 0.2rem);
+}
+
+.detail-cta:hover .link-arrow--right,
+.detail-cta:focus-visible .link-arrow--right,
+.closing-link:hover .link-arrow--right,
+.closing-link:focus-visible .link-arrow--right,
+.nav-primary:hover .link-arrow--right,
+.nav-primary:focus-visible .link-arrow--right {
+  transform: translateX(0.2rem);
+}
+
+.amazon-link:hover .link-arrow--up-right,
+.amazon-link:focus-visible .link-arrow--up-right,
+.social-link:hover .link-arrow--up-right,
+.social-link:focus-visible .link-arrow--up-right {
+  transform: translate(0.15rem, -0.15rem);
 }
 
 .cover-figure {
