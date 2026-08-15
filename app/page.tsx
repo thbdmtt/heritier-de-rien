@@ -232,7 +232,7 @@ export default function Home() {
               Lire le prologue <LinkArrow />
             </a>
             <a className="closing-link" href="/acheter/">
-              Disponible sur Kindle <LinkArrow />
+              Disponible sur Amazon <LinkArrow />
             </a>
           </div>
         </section>
