@@ -2,9 +2,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  AMAZON_HARDCOVER_URL,
   AMAZON_KINDLE_ASIN,
   AMAZON_KINDLE_URL,
+  AMAZON_PAPERBACK_URL,
   AUTHOR_NAME,
+  HARDCOVER_ISBN,
+  PAPERBACK_ISBN,
   authorEntity,
   bookEntity,
   breadcrumbJsonLd,
@@ -17,9 +21,9 @@ import {
 import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
-const title = "Acheter Héritier de rien — Édition Kindle";
+const title = "Acheter Héritier de rien — Broché, relié et Kindle";
 const description =
-  "Achetez Héritier de rien, Les petits cailloux du tacot, de Gilbert Myotte. Le livre est disponible au format Kindle sur Amazon.fr.";
+  "Achetez Héritier de rien, Les petits cailloux du tacot, de Gilbert Myotte. Le livre est disponible en broché, relié et Kindle sur Amazon.fr.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -76,9 +80,11 @@ export default function BuyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }}
       />
+
       <a className="skip-link" href="#contenu">
         Aller au contenu
       </a>
+
       <SiteHeader />
 
       <main id="contenu" className="detail-main">
@@ -89,39 +95,88 @@ export default function BuyPage() {
               <span aria-hidden="true">/</span>
               <span>Acheter le livre</span>
             </nav>
-            <p className="eyebrow">Disponible maintenant · Kindle</p>
-            <h1>Acheter Héritier de rien</h1>
-            <p className="detail-subtitle">Les petits cailloux du tacot</p>
-            <p className="detail-lead">
-              Le récit autobiographique de Gilbert Myotte est disponible au
-              format Kindle sur Amazon.fr.
+
+            <p className="eyebrow">
+              Disponible maintenant · Broché · Relié · Kindle
             </p>
+
+            <h1>Acheter Héritier de rien</h1>
+
+            <p className="detail-subtitle">Les petits cailloux du tacot</p>
+
+            <p className="detail-lead">
+              Le récit autobiographique de Gilbert Myotte est disponible en
+              trois éditions sur Amazon.fr.
+            </p>
+
+            <section
+              className="purchase-card"
+              aria-labelledby="paperback-title"
+            >
+              <p className="eyebrow">Édition papier</p>
+
+              <h2 id="paperback-title">Format broché</h2>
+
+              <p>
+                Retrouvez <i>Héritier de rien</i> dans son édition brochée
+                officielle. ISBN&nbsp;: {PAPERBACK_ISBN}.
+              </p>
+
+              <a
+                className="amazon-link"
+                href={AMAZON_PAPERBACK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Voir le broché sur Amazon.fr
+                <LinkArrow direction="up-right" />
+              </a>
+            </section>
+
+            <section
+              className="purchase-card"
+              aria-labelledby="hardcover-title"
+            >
+              <p className="eyebrow">Édition papier</p>
+
+              <h2 id="hardcover-title">Format relié</h2>
+
+              <p>
+                Retrouvez <i>Héritier de rien</i> dans son édition reliée
+                officielle. ISBN&nbsp;: {HARDCOVER_ISBN}.
+              </p>
+
+              <a
+                className="amazon-link"
+                href={AMAZON_HARDCOVER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Voir le relié sur Amazon.fr
+                <LinkArrow direction="up-right" />
+              </a>
+            </section>
 
             <section className="purchase-card" aria-labelledby="kindle-title">
               <p className="eyebrow">Édition numérique</p>
+
               <h2 id="kindle-title">Format Kindle</h2>
+
               <p>
                 Retrouvez <i>Héritier de rien</i> dans son édition numérique
                 officielle. Référence Amazon&nbsp;: {AMAZON_KINDLE_ASIN}.
               </p>
+
               <a
                 className="amazon-link"
                 href={AMAZON_KINDLE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Voir le livre sur Amazon.fr
+                Voir le Kindle sur Amazon.fr
                 <LinkArrow direction="up-right" />
               </a>
             </section>
-
-            <aside className="paperback-note">
-              <p className="eyebrow">À paraître</p>
-              <p>
-                L’édition papier sera ajoutée ici dès que son URL définitive et
-                son ISBN seront disponibles.
-              </p>
-            </aside>
 
             <Link className="detail-cta" href="/extrait/">
               Lire un extrait <LinkArrow />
@@ -131,6 +186,7 @@ export default function BuyPage() {
           <figure className="detail-visual">
             <div className="book-object">
               <span className="book-edge" aria-hidden="true" />
+
               <img
                 src="/images/heritier-de-rien-couverture.jpg"
                 alt={`Couverture du livre Héritier de rien, Les petits cailloux du tacot, de ${AUTHOR_NAME}`}
@@ -139,7 +195,10 @@ export default function BuyPage() {
                 fetchPriority="high"
               />
             </div>
-            <figcaption>Édition Kindle · Gilbert Myotte</figcaption>
+
+            <figcaption>
+              Broché · Relié · Kindle · Gilbert Myotte
+            </figcaption>
           </figure>
         </article>
       </main>
@@ -148,3 +207,4 @@ export default function BuyPage() {
     </>
   );
 }
+   
