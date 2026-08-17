@@ -2,12 +2,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  AMAZON_HARDCOVER_URL,
-  AMAZON_KINDLE_ASIN,
-  AMAZON_KINDLE_URL,
   AMAZON_PAPERBACK_URL,
   AUTHOR_NAME,
-  HARDCOVER_ISBN,
   PAPERBACK_ISBN,
   authorEntity,
   bookEntity,
@@ -21,9 +17,10 @@ import {
 import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
-const title = "Acheter Héritier de rien — Broché, relié et Kindle";
+const title = "Acheter Héritier de rien — Édition brochée";
+
 const description =
-  "Achetez Héritier de rien, Les petits cailloux du tacot, de Gilbert Myotte. Le livre est disponible en broché, relié et Kindle sur Amazon.fr.";
+  "Achetez Héritier de rien, Les petits cailloux du tacot, de Gilbert Myotte. L’édition brochée est disponible sur Amazon.fr.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -97,29 +94,35 @@ export default function BuyPage() {
             </nav>
 
             <p className="eyebrow">
-              Disponible maintenant · Broché · Relié · Kindle
+              Disponible maintenant · Broché
             </p>
 
             <h1>Acheter Héritier de rien</h1>
 
-            <p className="detail-subtitle">Les petits cailloux du tacot</p>
+            <p className="detail-subtitle">
+              Les petits cailloux du tacot
+            </p>
 
             <p className="detail-lead">
               Le récit autobiographique de Gilbert Myotte est disponible en
-              trois éditions sur Amazon.fr.
+              édition brochée sur Amazon.fr.
             </p>
 
             <section
               className="purchase-card"
               aria-labelledby="paperback-title"
             >
-              <p className="eyebrow">Édition papier</p>
+              <p className="eyebrow">
+                Édition papier
+              </p>
 
-              <h2 id="paperback-title">Format broché</h2>
+              <h2 id="paperback-title">
+                Format broché
+              </h2>
 
               <p>
-                Retrouvez <i>Héritier de rien</i> dans son édition brochée
-                officielle. ISBN&nbsp;: {PAPERBACK_ISBN}.
+                Retrouvez <i>Héritier de rien</i> dans son édition brochée.
+                ISBN&nbsp;: {PAPERBACK_ISBN}.
               </p>
 
               <a
@@ -133,51 +136,6 @@ export default function BuyPage() {
               </a>
             </section>
 
-            <section
-              className="purchase-card"
-              aria-labelledby="hardcover-title"
-            >
-              <p className="eyebrow">Édition papier</p>
-
-              <h2 id="hardcover-title">Format relié</h2>
-
-              <p>
-                Retrouvez <i>Héritier de rien</i> dans son édition reliée
-                officielle. ISBN&nbsp;: {HARDCOVER_ISBN}.
-              </p>
-
-              <a
-                className="amazon-link"
-                href={AMAZON_HARDCOVER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Voir le relié sur Amazon.fr
-                <LinkArrow direction="up-right" />
-              </a>
-            </section>
-
-            <section className="purchase-card" aria-labelledby="kindle-title">
-              <p className="eyebrow">Édition numérique</p>
-
-              <h2 id="kindle-title">Format Kindle</h2>
-
-              <p>
-                Retrouvez <i>Héritier de rien</i> dans son édition numérique
-                officielle. Référence Amazon&nbsp;: {AMAZON_KINDLE_ASIN}.
-              </p>
-
-              <a
-                className="amazon-link"
-                href={AMAZON_KINDLE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Voir le Kindle sur Amazon.fr
-                <LinkArrow direction="up-right" />
-              </a>
-            </section>
-
             <Link className="detail-cta" href="/extrait/">
               Lire un extrait <LinkArrow />
             </Link>
@@ -185,7 +143,10 @@ export default function BuyPage() {
 
           <figure className="detail-visual">
             <div className="book-object">
-              <span className="book-edge" aria-hidden="true" />
+              <span
+                className="book-edge"
+                aria-hidden="true"
+              />
 
               <img
                 src="/images/heritier-de-rien-couverture.jpg"
@@ -197,7 +158,7 @@ export default function BuyPage() {
             </div>
 
             <figcaption>
-              Broché · Relié · Kindle · Gilbert Myotte
+              Édition brochée · Gilbert Myotte
             </figcaption>
           </figure>
         </article>
@@ -207,4 +168,3 @@ export default function BuyPage() {
     </>
   );
 }
-   
