@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  AMAZON_KINDLE_URL,
+  AMAZON_PAPERBACK_URL,
   AUTHOR_NAME,
   authorEntity,
   bookEntity,
@@ -18,6 +18,7 @@ import { LinkArrow } from "../link-arrow";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
 const title = "Héritier de rien, le livre — Gilbert Myotte";
+
 const description =
   "Découvrez Héritier de rien, Les petits cailloux du tacot, le récit autobiographique sincère de Gilbert Myotte sur une vie construite sans filet.";
 
@@ -80,9 +81,11 @@ export default function BookPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }}
       />
+
       <a className="skip-link" href="#contenu">
         Aller au contenu
       </a>
+
       <SiteHeader />
 
       <main id="contenu" className="detail-main">
@@ -93,13 +96,22 @@ export default function BookPage() {
               <span aria-hidden="true">/</span>
               <span>Le livre</span>
             </nav>
-            <p className="eyebrow">Le livre · Récit autobiographique</p>
+
+            <p className="eyebrow">
+              Le livre · Récit autobiographique
+            </p>
+
             <h1>Héritier de rien</h1>
-            <p className="detail-subtitle">Les petits cailloux du tacot</p>
+
+            <p className="detail-subtitle">
+              Les petits cailloux du tacot
+            </p>
+
             <p className="detail-lead">
               <i>Héritier de rien</i> est le récit sans détour d’un homme qui
               regarde sa vie en face.
             </p>
+
             <p>
               Gilbert est né dans le fracas d’un orage, dans une maison de
               garde-barrière secouée par le vent. Son père partait travailler
@@ -107,6 +119,7 @@ export default function BookPage() {
               Autour de lui, rien n’était donné&nbsp;: ni les codes, ni les
               appuis, ni la promesse d’un avenir plus doux.
             </p>
+
             <p>
               Alors il a appris seul. À l’école, dans les ateliers, à l’armée,
               sur les routes, dans l’effort et dans la fatigue. Il a connu les
@@ -114,6 +127,7 @@ export default function BookPage() {
               tôt, les maladies qui surgissent lorsque l’on croit avoir déjà
               tout encaissé.
             </p>
+
             <p>
               Cette autobiographie brute, sincère et profondément humaine
               raconte une France discrète&nbsp;: celle des travailleurs de
@@ -121,29 +135,43 @@ export default function BookPage() {
               des existences construites sans filet. Elle ne cherche ni à
               embellir, ni à régler des comptes.
             </p>
+
             <p>
               Elle raconte ce que coûte une vie quand il faut tout apprendre
               par soi-même, tomber, se relever, recommencer, et prouver sans
               cesse que l’on a sa place.
             </p>
+
             <div className="cta-group">
               <Link className="detail-cta" href="/extrait/">
                 Lire un extrait <LinkArrow />
               </Link>
-              <Link className="detail-cta detail-cta-primary" href="/acheter/">
+
+              <Link
+                className="detail-cta detail-cta-primary"
+                href="/acheter/"
+              >
                 Acheter le livre <LinkArrow />
               </Link>
             </div>
+
             <p className="availability-note">
-              Disponible au format Kindle sur{" "}
-              <a href={AMAZON_KINDLE_URL}>Amazon.fr</a>. L’édition papier
-              paraîtra prochainement.
+              Disponible en édition brochée sur{" "}
+              <a
+                href={AMAZON_PAPERBACK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Amazon.fr
+              </a>
+              .
             </p>
           </div>
 
           <figure className="detail-visual">
             <div className="book-object">
               <span className="book-edge" aria-hidden="true" />
+
               <img
                 src="/images/heritier-de-rien-couverture.jpg"
                 alt={`Couverture du livre Héritier de rien, Les petits cailloux du tacot, de ${AUTHOR_NAME}`}
@@ -152,7 +180,10 @@ export default function BookPage() {
                 fetchPriority="high"
               />
             </div>
-            <figcaption>Récit autobiographique · Gilbert Myotte</figcaption>
+
+            <figcaption>
+              Récit autobiographique · Gilbert Myotte
+            </figcaption>
           </figure>
         </article>
       </main>
