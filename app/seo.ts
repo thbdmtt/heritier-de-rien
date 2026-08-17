@@ -5,13 +5,9 @@ export const BOOK_SUBTITLE = "Les petits cailloux du tacot";
 export const AUTHOR_NAME = "Gilbert Myotte";
 
 export const PAPERBACK_ISBN = "979-8191453774";
-export const AMAZON_KINDLE_ASIN = "B0HC34G72D";
 
 export const AMAZON_PAPERBACK_URL =
   "https://amzn.eu/d/0cmSNNIJ";
-
-export const AMAZON_KINDLE_URL =
-  `https://www.amazon.fr/dp/${AMAZON_KINDLE_ASIN}`;
 
 export const FACEBOOK_URL =
   "https://www.facebook.com/profile.php?id=61589753998177";
@@ -64,7 +60,6 @@ export const bookEntity = {
 
   sameAs: [
     AMAZON_PAPERBACK_URL,
-    AMAZON_KINDLE_URL,
   ],
 
   workExample: [
@@ -77,21 +72,6 @@ export const bookEntity = {
       isbn: PAPERBACK_ISBN,
       url: `${SITE_URL}/acheter/`,
       sameAs: AMAZON_PAPERBACK_URL,
-      author: { "@id": authorEntity["@id"] },
-    },
-    {
-      "@type": "Book",
-      "@id": `${SITE_URL}/le-livre/#edition-kindle`,
-      name: `${BOOK_TITLE} — ${BOOK_SUBTITLE}, édition Kindle`,
-      bookFormat: "https://schema.org/EBook",
-      inLanguage: "fr-FR",
-      url: `${SITE_URL}/acheter/`,
-      sameAs: AMAZON_KINDLE_URL,
-      identifier: {
-        "@type": "PropertyValue",
-        propertyID: "ASIN",
-        value: AMAZON_KINDLE_ASIN,
-      },
       author: { "@id": authorEntity["@id"] },
     },
   ],
