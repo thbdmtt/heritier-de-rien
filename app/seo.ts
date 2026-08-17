@@ -5,14 +5,10 @@ export const BOOK_SUBTITLE = "Les petits cailloux du tacot";
 export const AUTHOR_NAME = "Gilbert Myotte";
 
 export const PAPERBACK_ISBN = "979-8191453774";
-export const HARDCOVER_ISBN = "979-1098810008";
 export const AMAZON_KINDLE_ASIN = "B0HC34G72D";
 
 export const AMAZON_PAPERBACK_URL =
   "https://amzn.eu/d/0cmSNNIJ";
-
-export const AMAZON_HARDCOVER_URL =
-  "https://amzn.eu/d/00j59eyz";
 
 export const AMAZON_KINDLE_URL =
   `https://www.amazon.fr/dp/${AMAZON_KINDLE_ASIN}`;
@@ -68,7 +64,6 @@ export const bookEntity = {
 
   sameAs: [
     AMAZON_PAPERBACK_URL,
-    AMAZON_HARDCOVER_URL,
     AMAZON_KINDLE_URL,
   ],
 
@@ -82,17 +77,6 @@ export const bookEntity = {
       isbn: PAPERBACK_ISBN,
       url: `${SITE_URL}/acheter/`,
       sameAs: AMAZON_PAPERBACK_URL,
-      author: { "@id": authorEntity["@id"] },
-    },
-    {
-      "@type": "Book",
-      "@id": `${SITE_URL}/le-livre/#edition-reliee`,
-      name: `${BOOK_TITLE} — ${BOOK_SUBTITLE}, édition reliée`,
-      bookFormat: "https://schema.org/Hardcover",
-      inLanguage: "fr-FR",
-      isbn: HARDCOVER_ISBN,
-      url: `${SITE_URL}/acheter/`,
-      sameAs: AMAZON_HARDCOVER_URL,
       author: { "@id": authorEntity["@id"] },
     },
     {
